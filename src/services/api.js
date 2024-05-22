@@ -1,0 +1,22 @@
+// Fichero src/services/api.js
+const getDataFromApi = () => {
+  // Llamamos a la API
+  return fetch("https://raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json") 
+    .then((response) => response.json())
+    .then((data) => {
+      //hago map para del array que me da la API coger solo los datos que yo quiero
+      const newArray = data.results.map((character)=>{
+        return{
+          name: character.name,
+          id: character.id,
+          status: character.status,
+          species: character.species,
+          gender: character.gender,
+          image: character.image,
+        };
+      });
+      return newArray;
+    });
+};
+
+export default getDataFromApi;
