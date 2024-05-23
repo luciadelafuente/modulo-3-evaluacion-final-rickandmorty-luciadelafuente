@@ -21,36 +21,38 @@ function App() {
     const [statusFilter, setStatusFilter] = useState("");
 
 
-  //UseEffect para coger los datos de la API y meterlos en la variable de estado que he creado (listUser)
+  //UseEffect para coger los datos de la API y meterlos en la variable de estado que he creado
   useEffect(() => {
     getDataFromApi().then((newArray) => {
-      // Ordenar el array obtenido de la API
+      // Ordenar el array obtenido de la API alfabéticamente
       const orderArray = newArray.sort((a, b) => a.name.localeCompare(b.name));
       setListCharacter(orderArray);
     });
   }, []);
   
-  //Función para recoger los planetas
+  //Función que verifica si el planeta está macado o no
   const changeOriginFilter = (value) => {
-    //buscar si el planeta esta en el array
+    //Buscar si el planeta esta en el array
     if (originFilter.includes(value)) {
-      // extraer el planeta del array
+      //Hago un filter que nos devuelve un array de los planetas que sean diferentes del value marcado por el usuario
       const newPlanets = originFilter.filter(planet => planet !== value)
+      //Aquí modifico mi variable de estado y la sustituyo por ese nuevo Array
       setOriginFilter(newPlanets)
     } else {
-      // si no está el planeta en el array de ciudades lo añado
+      //Si no está el planeta en el array de origin lo añado
       setOriginFilter([...originFilter, value])
     }
   }
 
-  //Función para recoger los planetas
+  //Función para recoger los planetas en una nueva variable
   const getPlanets = () => {
-    // saco todas los planetas del array de personajes
+    // Saco todas los planetas del array de personajes y los meto en una variable
     const planets = listCharacter.map((character) => character.origin)
-    //Set me quedo con los valores unicos del array de planetas creado
+    //Set: función para recoger los planetas pero sin que se repitan en otra variable
     const uniquePlanets = new Set(planets)
-    //convierto en un array el objeto devuelto por Set
+    //Array en el que recojo los planetas sin repetir de la variable anterior
     const uniqueArray = [...uniquePlanets]
+    //Esta función me devuelve el array de planetas sin repetir
     return uniqueArray
   }
 
@@ -63,36 +65,33 @@ function App() {
     }
   }).filter((character) => {
     if (specieFilter === "") {
-      return character; // Incluye todos los personajes si searchCharacter está vacío
+      return character; // Incluye todos los personajes si specieFilter está vacío
     }else{
-      return character.species === specieFilter;
+      return character.species === specieFilter; // Filtra por especie cuando searchCharacter tiene un valor
     }
   }).filter((character) => {
     if (originFilter.length === 0) {
-      return character
+      return character // Incluye todos los personajes si originFilter está vacío
     } else {
-      return originFilter.includes(character.origin)
+      return originFilter.includes(character.origin) // Filtra por origen cuando searchCharacter tiene un valor
     }
   }).filter((character) => {
     if (statusFilter === "") {
-      return character; 
+      return character; // Incluye todos los personajes si statusFilter está vacío
     }else{
-      return character.status === statusFilter;
+      return character.status === statusFilter; // Filtra por estado cuando searchCharacter tiene un valor
     }
   })
 
 
 
-
+  //Variable que recoge el nombre de la ruta mediante destructuring y el hook useLocation
   const { pathname } = useLocation();
-  console.log(pathname)
-  //valida si estoy en la ruta dinamica /detail/:id, sino estas en la ruta /detail/:id devuelve null
+  //Variable que verifica si estoy en la ruta dinámica que yo le he dicho a través de mathPath, si no está devuelve null
   const characterRoute = matchPath("/detail/:id", pathname)
-  //en caso que la ruta coincida, obtengo de esa ruta el id enviado por parametros
+  //Variable que en caso de que coincida la ruta dinámica, recojo de esa ruta el id que he mandado por parámetro
   const characterIdUrl = characterRoute ? characterRoute.params.id : null;
-  //characterIdUrl contiene el id de la url
-
-  //busco el usuario que tiene un id  =  al que se ha enviado por la url
+   //Variable que encuentra y se queda con el personaje de mi array que coincide con el id que he recogido de la url en la variable characterIdUrl
   const characterDetail = listCharacter.find(character => character.id === parseInt(characterIdUrl));
    console.log(characterDetail);
 

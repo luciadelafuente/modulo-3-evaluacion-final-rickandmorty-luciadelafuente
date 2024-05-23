@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function FilterByStatus({statusFilter, setStatusFilter}) {
 
     const handleChange = (event) => {
@@ -16,5 +18,10 @@ function FilterByStatus({statusFilter, setStatusFilter}) {
     </div>
   )
 }
+
+FilterByStatus.propTypes = {
+  statusFilter: PropTypes.string,
+  setStatusFilter: PropTypes.func,
+};
 
 export default FilterByStatus

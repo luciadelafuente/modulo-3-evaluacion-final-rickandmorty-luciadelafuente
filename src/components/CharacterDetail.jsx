@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function CharacterDetail({characterDetail}) {
   return (characterDetail ?
@@ -23,5 +24,9 @@ function CharacterDetail({characterDetail}) {
     </div> 
   )
 }
+
+CharacterDetail.propTypes = {
+  characterDetail: PropTypes.array,
+};
 
 export default CharacterDetail

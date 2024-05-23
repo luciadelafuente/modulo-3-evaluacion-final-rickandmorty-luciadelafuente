@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function CharacterCard({infoCharacter}) {
   return (
@@ -13,5 +14,9 @@ function CharacterCard({infoCharacter}) {
     </article>
   )
 }
+
+CharacterCard.propTypes = {
+  infoCharacter: PropTypes.array,
+};
 
 export default CharacterCard

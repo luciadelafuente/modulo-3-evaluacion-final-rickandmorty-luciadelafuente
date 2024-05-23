@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 
 function FilterBySpecie({setSpecieFilter, specieFilter}) {
 
@@ -17,5 +18,10 @@ function FilterBySpecie({setSpecieFilter, specieFilter}) {
     </div>
   )
 }
+
+FilterBySpecie.propTypes = {
+  specieFilter: PropTypes.string,
+  setSpecieFilter: PropTypes.func,
+};
 
 export default FilterBySpecie

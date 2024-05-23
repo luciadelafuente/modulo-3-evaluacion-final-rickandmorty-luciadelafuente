@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function FilterByName({setSearchCharacter, searchCharacter}) {
     const handleInput = (event) => {
         event.preventDefault();
@@ -10,5 +12,10 @@ function FilterByName({setSearchCharacter, searchCharacter}) {
     </form>
   )
 }
+
+FilterByName.propTypes = {
+  setSearchCharacter: PropTypes.func,
+  searchCharacter: PropTypes.string,
+};
 
 export default FilterByName

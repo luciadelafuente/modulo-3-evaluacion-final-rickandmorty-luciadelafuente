@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 
 function FilterByOrigin({planets, changeOriginFilter}) {
     const handleCheckbox = (event) => {
@@ -22,5 +23,10 @@ function FilterByOrigin({planets, changeOriginFilter}) {
     </div>
   )
 }
+
+FilterByOrigin.propTypes = {
+    planets: PropTypes.array,
+    changeOriginFilter: PropTypes.func,
+  };
 
 export default FilterByOrigin

@@ -1,5 +1,6 @@
 import CharacterCard from "./CharacterCard";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function CharacterList({listCharacter, searchCharacter}) {
  
@@ -17,5 +18,10 @@ function CharacterList({listCharacter, searchCharacter}) {
     </> 
   )
 }
+
+CharacterList.propTypes = {
+  listCharacter: PropTypes.array,
+  searchCharacter: PropTypes.string,
+};
 
 export default CharacterList
