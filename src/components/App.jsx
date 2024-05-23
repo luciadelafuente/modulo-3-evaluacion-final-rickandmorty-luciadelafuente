@@ -109,8 +109,11 @@ function App() {
         <Route path="/detail/:id" element= {<CharacterDetail characterDetail={characterDetail} />} />
         <Route path="*" element={
         <>
-          <h2>No se ha encontrado ningún personaje</h2>
-          <Link to="/"> Ir a home</Link>
+          <div className="notfound">
+              <h2 className="text__notfound" >No se ha encontrado ningún personaje</h2>
+              <Link className="card__link" to="/"> Ir a home</Link>
+          </div>
+          
         </>
       } />
       </Routes>

@@ -5,12 +5,15 @@ function FilterByOrigin({planets, changeOriginFilter}) {
     }
 
   return (
-    <div>
-        <label htmlFor="">Filtra los personajes seleccionando su planeta de origen:</label>
+    <div className="form__checkbox">
+        <label className="form__text" htmlFor="">Filtra los personajes seleccionando su planeta de origen:</label>
         {planets.map((planet) => {
         return <>
-                <input type="checkbox" name="" id="" value={planet} onChange={handleCheckbox} />
+            <article className="checkbox__text">
+                <input className="form__input" type="checkbox" name="" id="" value={planet} onChange={handleCheckbox} />
                 <label htmlFor="">{planet}</label>
+            </article>
+                
             </>
         }
 

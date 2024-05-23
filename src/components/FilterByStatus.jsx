@@ -5,9 +5,9 @@ function FilterByStatus({statusFilter, setStatusFilter}) {
     }
 
   return (
-    <div>
-        <label htmlFor="">Selecciona un estado:</label>
-        <select name="" id="" onChange={handleChange} value={statusFilter} >
+    <div className="form__select">
+        <label className="form__text" htmlFor="">Selecciona un estado:</label>
+        <select className="form__input" name="" id="" onChange={handleChange} value={statusFilter} >
             <option value="">Todos</option>
             <option value="Dead">Muerto</option>
             <option value="Alive">Vivo</option>

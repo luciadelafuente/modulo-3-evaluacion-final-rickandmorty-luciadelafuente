@@ -4,9 +4,9 @@ function FilterByName({setSearchCharacter, searchCharacter}) {
         setSearchCharacter(event.target.value);
     }
   return (
-    <form>
-        <label htmlFor="">Busca tu personaje favorito por su nombre:</label>
-        <input onChange={handleInput} type="text" name="" id="" value={searchCharacter}/>
+    <form className="form">
+        <label className="form__text" htmlFor="">Busca tu personaje favorito por su nombre:</label>
+        <input className="form__input" onChange={handleInput} type="text" name="" id="" value={searchCharacter}/>
     </form>
   )
 }

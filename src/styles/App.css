@@ -1,0 +1,184 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.header{
+    width: 100%;
+    height: 20%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__image{
+    width: 300px;
+    height: 180px;
+}
+
+body{
+    background-color: #01b4c6;
+    height: 65%;
+}
+
+.filters{
+   padding: 15px;
+   display: flex;
+   flex-direction: column;
+   gap:20px;
+   color:white;
+   position: relative;
+   align-items: center;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:8px;
+}
+
+.form__text{
+    font-size: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.form__input{
+    border-radius: 8%;
+    border: 2px solid #BEE5FD;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #01b4c6;
+}
+
+.form__select{
+    display: flex;
+    gap: 10px;
+}
+
+.form__checkbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+}
+
+.checkbox__text{
+    display: flex;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    height: 100%;
+   
+}
+
+.card__link{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    color: white;
+    text-decoration:underline;
+}
+
+.card__link:hover{
+    color:  black;
+}
+
+.card__data{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap:5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+    font-size: 20px;
+    border: 5px solid #BEE5FD;
+}
+
+.card__image{
+    width: 100%; 
+    height: auto; 
+    object-fit: cover;
+    padding:30px;
+}
+
+.card__texts{
+    width: 100%;
+    background-color: #BEE5FD;
+    padding: 10px;
+}
+
+.card__texts:hover{
+    background-color: black;
+    color:  #BEE5FD;
+}
+
+.notfound{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:50px;
+    height: 65vh;
+    padding: 30px;
+}
+
+.text__notfound{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    background-color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 15%;
+}
+
+.footer__image{
+    width: 100px;
+    height: 75px;
+}
+
+.footer__text{
+    color: white;
+    text-align: end;
+    font-size: 10px;
+    align-content: center;
+}
+
+
+@media (min-width:480px){
+    .form__text{
+        font-size: 20px;
+    }
+    .form__checkbox{
+        font-size: 15px;
+    }
+    .list{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .text__notfound{
+        font-size: 50px;
+    }
+}

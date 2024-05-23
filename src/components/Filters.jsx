@@ -3,10 +3,10 @@ import FilterByOrigin from "./FilterByOrigin"
 import FilterBySpecie from "./FilterBySpecie"
 import FilterByStatus from "./FilterByStatus"
 
-function Filters({setSearchCharacter, setSpecieFilter, specieFilter, planets, changeOriginFilter, statusFilter, setStatusFilter}) {
+function Filters({setSearchCharacter, searchCharacter, setSpecieFilter, specieFilter, planets, changeOriginFilter, statusFilter, setStatusFilter}) {
   return (
-    <div>
-      <FilterByName setSearchCharacter={setSearchCharacter} />
+    <div className="filters">
+      <FilterByName setSearchCharacter={setSearchCharacter} searchCharacter={searchCharacter}/>
       <FilterBySpecie setSpecieFilter={setSpecieFilter} specieFilter={specieFilter}/>
       <FilterByOrigin planets={planets} changeOriginFilter={changeOriginFilter} />
       <FilterByStatus statusFilter={statusFilter} setStatusFilter={setStatusFilter} />

@@ -7,9 +7,9 @@ function FilterBySpecie({setSpecieFilter, specieFilter}) {
 
   return (
 
-    <div>
-        <label htmlFor="">Selecciona una especie:</label>
-        <select name="" id="" onChange={handleChange} value={specieFilter} >
+    <div className="form__select">
+        <label className="form__text" htmlFor="">Selecciona una especie:</label>
+        <select className="form__input" name="" id="" onChange={handleChange} value={specieFilter} >
             <option value="">Todas</option>
             <option value="Human">Humano</option>
             <option value="Alien">Alien</option>
