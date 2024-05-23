@@ -5,10 +5,10 @@ function CharacterCard({infoCharacter}) {
     <article>
       <Link to={`/detail/${infoCharacter.id}`}>
         <img src={infoCharacter.image} alt="" />
-        <p>{infoCharacter.name}</p>
-        <p>{infoCharacter.species}</p>        
+        <p>Nombre: {infoCharacter.name}</p>
+        <p>Especie: {infoCharacter.species}</p>        
       </Link>     
-</article>
+    </article>
   )
 }
 

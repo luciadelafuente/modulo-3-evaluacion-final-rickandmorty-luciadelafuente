@@ -5,26 +5,84 @@ import CharacterList from './CharacterList';
 import Filters from './Filters';
 import { Route, Routes, matchPath, useLocation, Link} from 'react-router-dom';
 import CharacterDetail from './CharacterDetail';
+import Header from './Header';
+import Footer from './Footer';
 
 function App() {
     //Variable de estado que de valor inicial recibe un array vacío
     const [listCharacter, setListCharacter] = useState([]);
-
     //Variable que recoge los datos buscados en el input de búsqueda
-    const [searchCharacter, setSearchCharacter] = useState([]);
+    const [searchCharacter, setSearchCharacter] = useState("");
+    //Variable que recoge los datos filtrados por especie
+    const [specieFilter, setSpecieFilter] = useState("");
+    //Variable que recoge los datos filtrados por planeta
+    const [originFilter, setOriginFilter] = useState([]);
+    //Variable que recoge los datos filtrados por estado
+    const [statusFilter, setStatusFilter] = useState("");
 
-     //UseEffect para coger los datos de la API y meterlos en la variable de estado que he creado (listUser)
-    useEffect(()=>{
-    getDataFromApi().then((newArray)=>{setListCharacter(newArray)});
+
+  //UseEffect para coger los datos de la API y meterlos en la variable de estado que he creado (listUser)
+  useEffect(() => {
+    getDataFromApi().then((newArray) => {
+      // Ordenar el array obtenido de la API
+      const orderArray = newArray.sort((a, b) => a.name.localeCompare(b.name));
+      setListCharacter(orderArray);
+    });
   }, []);
+  
+  //Función para recoger los planetas
+  const changeOriginFilter = (value) => {
+    //buscar si el planeta esta en el array
+    if (originFilter.includes(value)) {
+      // extraer el planeta del array
+      const newPlanets = originFilter.filter(planet => planet !== value)
+      setOriginFilter(newPlanets)
+    } else {
+      // si no está el planeta en el array de ciudades lo añado
+      setOriginFilter([...originFilter, value])
+    }
+  }
 
+  //Función para recoger los planetas
+  const getPlanets = () => {
+    // saco todas los planetas del array de personajes
+    const planets = listCharacter.map((character) => character.origin)
+    //Set me quedo con los valores unicos del array de planetas creado
+    const uniquePlanets = new Set(planets)
+    //convierto en un array el objeto devuelto por Set
+    const uniqueArray = [...uniquePlanets]
+    return uniqueArray
+  }
+
+  //Filtros
    const filterData = listCharacter.filter((character) => {
     if (searchCharacter === "") {
-      return true; // Incluye todos los personajes si searchCharacter está vacío
+      return character; // Incluye todos los personajes si searchCharacter está vacío
     }else{
-      return character.name.toLowerCase().includes(searchCharacter.toString().toLowerCase()); // Filtra por nombre cuando searchCharacter tiene un valor
+      return character.name.toLowerCase().includes(searchCharacter.toLowerCase()); // Filtra por nombre cuando searchCharacter tiene un valor
     }
-  });
+  }).filter((character) => {
+    if (specieFilter === "") {
+      return character; // Incluye todos los personajes si searchCharacter está vacío
+    }else{
+      return character.species === specieFilter;
+    }
+  }).filter((character) => {
+    if (originFilter.length === 0) {
+      return character
+    } else {
+      return originFilter.includes(character.origin)
+    }
+  }).filter((character) => {
+    if (statusFilter === "") {
+      return character; 
+    }else{
+      return character.status === statusFilter;
+    }
+  })
+
+
+
 
   const { pathname } = useLocation();
   console.log(pathname)
@@ -40,11 +98,12 @@ function App() {
 
   return (
     <>
+      <Header/>
       <Routes>
         <Route path="/" element= {
           <>
-            <Filters setSearchCharacter={setSearchCharacter} />
-            <CharacterList listCharacter={filterData}/>
+            <Filters setSearchCharacter={setSearchCharacter} searchCharacter= {searchCharacter} setSpecieFilter={setSpecieFilter} specieFilter={specieFilter} planets={getPlanets()} changeOriginFilter={changeOriginFilter} statusFilter={statusFilter} setStatusFilter={setStatusFilter} />
+            <CharacterList listCharacter={filterData} searchCharacter= {searchCharacter}/>
           </>
         }/>
         <Route path="/detail/:id" element= {<CharacterDetail characterDetail={characterDetail} />} />
@@ -55,6 +114,7 @@ function App() {
         </>
       } />
       </Routes>
+      <Footer/>
     </>
   );
 }

@@ -1,11 +1,14 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function CharacterDetail({characterDetail}) {
   return (characterDetail ?
     <div>
       <img src={characterDetail.image} alt="" />
-      <p>{characterDetail.name}</p>
-      <p>{characterDetail.species}</p>
+      <p>Nombre: {characterDetail.name}</p>
+      <p>Especie: {characterDetail.species}</p>
+      <p>Planeta de origen: {characterDetail.origin}</p>
+      <p>Número de episodios en los que aparece: {characterDetail.episodes}</p>
+      <p>Estado: {characterDetail.status}</p>
       <Link to="/"> Ir a home</Link>
     </div> 
     : <>

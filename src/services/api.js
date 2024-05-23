@@ -13,6 +13,8 @@ const getDataFromApi = () => {
           species: character.species,
           gender: character.gender,
           image: character.image,
+          origin: character.origin.name,
+          episodes: character.episode.length,
         };
       });
       return newArray;
