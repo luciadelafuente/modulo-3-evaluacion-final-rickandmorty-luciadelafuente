@@ -102,7 +102,7 @@ function App() {
         <Route path="/" element= {
           <>
             <Filters setSearchCharacter={setSearchCharacter} searchCharacter= {searchCharacter} setSpecieFilter={setSpecieFilter} specieFilter={specieFilter} planets={getPlanets()} changeOriginFilter={changeOriginFilter} statusFilter={statusFilter} setStatusFilter={setStatusFilter} />
-            <CharacterList listCharacter={filterData} searchCharacter= {searchCharacter}/>
+            <CharacterList listCharacter={filterData} searchCharacter= {searchCharacter} setSearchCharacter={setSearchCharacter}/>
           </>
         }/>
         <Route path="/detail/:id" element= {<CharacterDetail characterDetail={characterDetail} />} />
